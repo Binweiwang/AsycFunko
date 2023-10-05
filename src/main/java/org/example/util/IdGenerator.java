@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class IdGenerator {
-    private static final IdGenerator instance = null;
+    private static IdGenerator instance = null;
     private final Lock lock = new ReentrantLock(true);
     private long myid = 0;
 
@@ -29,7 +29,7 @@ public class IdGenerator {
     public long setMyid(){
         lock.lock();
         try{
-            return myid++;
+           return this.myid++;
         }finally {
             lock.unlock();
         }

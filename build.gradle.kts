@@ -21,7 +21,9 @@ dependencies {
     // Ibatis lo usaremos para leer los scripts SQL desde archivos
     implementation("org.mybatis:mybatis:3.5.13")
     // H2, solo usa una
-    implementation("com.h2database:h2:2.2.224")
+    implementation("com.h2database:h2:2.1.214")
+    // HikaryCP para la conexión a la BD
+    implementation("com.zaxxer:HikariCP:5.0.1")
 }
 
 tasks.test {

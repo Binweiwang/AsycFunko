@@ -2,32 +2,33 @@ package org.example;
 
 
 import org.example.model.Funko;
+import org.example.repository.funko.FunkoRepositoryImp;
+import org.example.repository.funko.FunkoRepository;
+import org.example.service.DatabaseManager;
 import org.example.util.CsvCreater;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import static java.lang.Thread.sleep;
 
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, SQLException, ExecutionException {
         var csvCreater = new CsvCreater();
+        FunkoRepository funkoRepository = FunkoRepositoryImp.getInstance(DatabaseManager.getInstance());
         CompletableFuture<ArrayList<Funko>> arrayListCompletableFuture = csvCreater.csvToFunkos();
-        arrayListCompletableFuture.thenAccept(funkos -> {
-            int count = 0;
-            for (Funko funko : funkos) {
-                System.out.println(funko);
-                count++;
-            }
-            System.out.println(count);
-        });
-
-        sleep(10000);
+//        arrayListCompletableFuture.thenAccept(funkos -> {
+//            for (Funko funko : funkos) {
+//                try {
+//                    funkoRepository.save(funko);
+//                } catch (SQLException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        });
+sleep(1000);
 
     }
 }
