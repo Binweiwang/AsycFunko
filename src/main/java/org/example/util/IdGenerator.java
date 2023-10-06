@@ -12,7 +12,7 @@ public class IdGenerator {
     }
     public synchronized static IdGenerator getInstance(){
         if(instance == null){
-            return new IdGenerator();
+            instance = new IdGenerator();
         }
         return instance;
     }
