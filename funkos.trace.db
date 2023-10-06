@@ -1,0 +1,661 @@
+2023-10-05 23:33:06 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-05 23:34:02 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 01:34:14 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.example.service.DatabaseManager.<init>(DatabaseManager.java:33)
+	at org.example.service.DatabaseManager.getInstance(DatabaseManager.java:79)
+	at org.example.Main.main(Main.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 25 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 19 more
+2023-10-06 01:34:18 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.example.service.DatabaseManager.<init>(DatabaseManager.java:33)
+	at org.example.service.DatabaseManager.getInstance(DatabaseManager.java:79)
+	at org.example.Main.main(Main.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 25 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 19 more
+2023-10-05 23:56:37 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 00:04:22 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 02:23:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "uuid" not found [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getObject(JdbcResultSet.java:4216)
+	at com.zaxxer.hikari.pool.HikariProxyResultSet.getObject(HikariProxyResultSet.java)
+	at org.example.repository.funko.FunkoRepositoryImp.lambda$findAll$1(FunkoRepositoryImp.java:92)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1311)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+2023-10-06 00:27:24 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 02:28:39 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.example.service.DatabaseManager.<init>(DatabaseManager.java:33)
+	at org.example.service.DatabaseManager.getInstance(DatabaseManager.java:79)
+	at org.example.Main.main(Main.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 25 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 19 more
+2023-10-06 00:28:50 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 02:28:54 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.example.service.DatabaseManager.<init>(DatabaseManager.java:33)
+	at org.example.service.DatabaseManager.getInstance(DatabaseManager.java:79)
+	at org.example.Main.main(Main.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 25 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 19 more
+2023-10-06 00:31:37 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 00:38:27 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(25.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(18.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(19.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(23.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(16.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(20.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(26.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(18.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(23.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(28.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(22.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(25.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(24.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(27.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(26.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(36.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(38.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(40.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(42.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(39.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(37.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(45.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(42.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(51.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(38.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(39.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(43.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(44.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(46.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(48.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(50.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:40:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(52.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(25.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(18.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(19.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(23.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(16.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(20.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(26.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(18.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(23.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(28.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(22.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(25.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(24.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(27.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(26.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(36.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(29.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(38.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(31.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(40.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(42.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(39.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(33.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(37.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(45.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(35.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(42.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(51.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(38.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(39.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(43.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(44.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(46.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(48.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(50.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 10:42:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "CAST(52.99 AS DOUBLE PRECISION) (FUNKOS: ""PRECIO"" TIMESTAMP)"; SQL statement:
+INSERT INTO FUNKOS (cod, myId, nombre, modelo, precio, fecha_lanzamiento) VALUES(?,?,?,?,?,?) [22018-214]
+2023-10-06 08:42:13 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1573)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:469)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:360)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:712)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:587)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:828)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:705)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:704)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-06 10:42:45 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at org.example.service.DatabaseManager.<init>(DatabaseManager.java:33)
+	at org.example.service.DatabaseManager.getInstance(DatabaseManager.java:79)
+	at org.example.Main.main(Main.java:20)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 25 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/Proyecto/AsycFunko/AsycFunko/funkos.mv.db [2.1.214/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.FileStore.open(FileStore.java:178)
+	at org.h2.mvstore.FileStore.open(FileStore.java:128)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
+	... 19 more

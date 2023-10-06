@@ -2,32 +2,34 @@ package org.example;
 
 
 import org.example.model.Funko;
-import org.example.util.CsvCreater;
+import org.example.repository.funko.FunkoRepositoryImp;
+import org.example.service.DatabaseManager;
+import org.example.service.funko.FunkoService;
+import org.example.service.funko.FunkoServiceImp;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import static java.lang.Thread.sleep;
 
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        var csvCreater = new CsvCreater();
-        CompletableFuture<ArrayList<Funko>> arrayListCompletableFuture = csvCreater.csvToFunkos();
-        arrayListCompletableFuture.thenAccept(funkos -> {
-            int count = 0;
-            for (Funko funko : funkos) {
-                System.out.println(funko);
-                count++;
-            }
-            System.out.println(count);
-        });
-
-        sleep(10000);
-
+    public static void main(String[] args) throws InterruptedException, SQLException, ExecutionException {
+        FunkoService funkoService = FunkoServiceImp.getInstance(FunkoRepositoryImp.getInstance(DatabaseManager.getInstance()));
+        System.out.println("Convierte CSV a Funkos");
+        List<Funko> funkos = funkoService.csvToFunko();
+        for (Funko funko : funkos) {
+           funkoService.save(funko);
+        }
+        System.out.println("Obetiendo todos los funkos");
+        List<Funko> all = funkoService.findAll();
+        for (Funko funko : all) {
+            System.out.println(funko);
+        }
+        System.out.println("Buscar Funko por nombre Loki Mischief");
+        List<Funko> lokiMischief = funkoService.findbyNombre("Loki Mischief");
+        System.out.println(lokiMischief);
     }
 }
