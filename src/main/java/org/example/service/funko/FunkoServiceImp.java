@@ -1,6 +1,9 @@
 package org.example.service.funko;
+import org.example.cache.Cache;
 import org.example.model.Funko;
 import org.example.repository.funko.FunkoRepository;
+import org.example.service.cacheService.FunkoCache;
+import org.example.service.cacheService.FunkoCacheImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +16,12 @@ public class FunkoServiceImp implements FunkoService {
     private static FunkoServiceImp instance;
     private final Logger logger= LoggerFactory.getLogger(FunkoServiceImp.class);
     private FunkoRepository funkoRepository;
+    private FunkoCache cache;
+    private static final int CACHE_SIZE = 10;
 
     private FunkoServiceImp(FunkoRepository funkoRepository){
         this.funkoRepository = funkoRepository;
+        this.cache = new FunkoCacheImp(CACHE_SIZE);
     }
     public static FunkoServiceImp getInstance(FunkoRepository funkoRepository){
         if (instance == null){
@@ -41,23 +47,33 @@ public class FunkoServiceImp implements FunkoService {
 
     @Override
     public Funko save(Funko funko) throws SQLException, ExecutionException, InterruptedException {
-        return funkoRepository.save(funko).get();
+        funko = funkoRepository.save(funko).get();
+        cache.put(funko.getId(),funko);
+        return funko;
+
 
     }
 
     @Override
     public Funko update(Funko funko) throws SQLException, ExecutionException, InterruptedException {
-        return funkoRepository.update(funko).get();
+        funko =funkoRepository.update(funko).get();
+        cache.put(funko.getId(),funko);
+        return funko;
     }
 
     @Override
     public boolean deleteById(long id) throws SQLException, ExecutionException, InterruptedException {
-        return funkoRepository.deleteById(id).get();
+        var deleted = funkoRepository.deleteById(id).get();
+        if (deleted){
+            cache.remove(id);
+        }
+        return deleted;
     }
 
     @Override
     public void deleteAll() throws SQLException, ExecutionException, InterruptedException {
         funkoRepository.deleteAll().get();
+        cache.clear();
     }
 
     @Override
