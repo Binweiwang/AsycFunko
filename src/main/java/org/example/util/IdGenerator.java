@@ -20,7 +20,7 @@ public class IdGenerator {
     public long getMyid(){
         lock.lock();
         try{
-            return this.myid;
+            return this.myid++;
         }finally {
             lock.unlock();
         }
@@ -29,7 +29,7 @@ public class IdGenerator {
     public long setMyid(){
         lock.lock();
         try{
-           return this.myid++;
+           return this.myid;
         }finally {
             lock.unlock();
         }
