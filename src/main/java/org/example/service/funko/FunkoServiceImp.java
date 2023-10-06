@@ -1,7 +1,6 @@
 package org.example.service.funko;
 import org.example.model.Funko;
 import org.example.repository.funko.FunkoRepository;
-import org.example.repository.funko.FunkoRepositoryImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,34 +31,33 @@ public class FunkoServiceImp implements FunkoService {
 
     @Override
     public List<Funko> findbyNombre(String nombre) throws SQLException, ExecutionException, InterruptedException {
-        return null;
+        return funkoRepository.findByNombre(nombre).get();
     }
 
     @Override
     public Optional<Funko> findById(long id) throws SQLException, ExecutionException, InterruptedException {
-        return Optional.empty();
+        return funkoRepository.findById(id).get();
     }
 
     @Override
     public Funko save(Funko funko) throws SQLException, ExecutionException, InterruptedException {
-        logger.debug("Guardando funko");
         return funkoRepository.save(funko).get();
 
     }
 
     @Override
     public Funko update(Funko funko) throws SQLException, ExecutionException, InterruptedException {
-        return null;
+        return funkoRepository.update(funko).get();
     }
 
     @Override
     public boolean deleteById(long id) throws SQLException, ExecutionException, InterruptedException {
-        return false;
+        return funkoRepository.deleteById(id).get();
     }
 
     @Override
     public void deleteAll() throws SQLException, ExecutionException, InterruptedException {
-
+        funkoRepository.deleteAll().get();
     }
 
     @Override
