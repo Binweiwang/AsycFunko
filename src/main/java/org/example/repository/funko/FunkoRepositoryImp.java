@@ -2,25 +2,18 @@ package org.example.repository.funko;
 
 import org.example.model.Funko;
 import org.example.service.DatabaseManager;
-import org.example.util.IdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-
 public class FunkoRepositoryImp implements FunkoRepository {
     private static FunkoRepositoryImp instance;
     private final Logger logger = LoggerFactory.getLogger(FunkoRepositoryImp.class);
@@ -63,6 +56,8 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 }
             } catch (SQLException e) {
                 logger.debug("Error al guardar el funko " + e.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
             return funko;
         });
@@ -150,6 +145,8 @@ public class FunkoRepositoryImp implements FunkoRepository {
             } catch (SQLException e) {
                 logger.error("Error al buscar todos los alumnos", e);
                 throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
             return lista;
         });
@@ -175,7 +172,7 @@ public class FunkoRepositoryImp implements FunkoRepository {
     @Override
     public CompletableFuture<Void> deleteAll() throws SQLException {
         return CompletableFuture.runAsync(()->{
-            String query = "DELETE FROM FUNKO";
+            String query = "DELETE FROM FUNKOS";
             try(var connection = db.getConnection();
                 var stmt = connection.prepareStatement(query)) {
                 logger.debug("Borrando todos los Funkos");
@@ -213,6 +210,38 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 }
             } catch (SQLException e) {
                 logger.debug("Error al buscar funko por nombre");
+                throw new RuntimeException(e);
+            }
+            return lista;
+        });
+    }
+
+    @Override
+    public CompletableFuture<List<Funko>> findByModelo(String modelo) {
+        return CompletableFuture.supplyAsync(() -> {
+            var lista = new ArrayList<Funko>();
+            String query = "SELECT * FROM FUNKOS WHERE modelo LIKE ?";
+            try (var connection = db.getConnection();
+                 var stmt = connection.prepareStatement(query)) {
+                logger.debug("Obteniendo todos los funko por modelo que contenga: " + modelo);
+                stmt.setString(1, "%" + modelo + "%");
+                var rs = stmt.executeQuery();
+                while (rs.next()) {
+                    Funko funko = Funko.builder()
+                            .id(rs.getInt("id"))
+                            .cod(rs.getObject("cod", UUID.class))
+                            .myId(rs.getLong("myid"))
+                            .nombre(rs.getString("nombre"))
+                            .modelo(rs.getString("modelo"))
+                            .precio(rs.getDouble("precio"))
+                            .fechaLanzamiento(((java.sql.Date) rs.getObject("fecha_lanzamiento")).toLocalDate())
+                            .credated_at(rs.getTimestamp("created_at").toLocalDateTime())
+                            .updated_at(rs.getTimestamp("updated_at").toLocalDateTime())
+                            .build();
+                    lista.add(funko);
+                }
+            } catch (SQLException e) {
+                logger.debug("Error al buscar funko por modelo");
                 throw new RuntimeException(e);
             }
             return lista;

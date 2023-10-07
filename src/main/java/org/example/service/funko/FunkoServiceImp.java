@@ -18,18 +18,15 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class FunkoServiceImp implements FunkoService {
     private static FunkoServiceImp instance;
     private final Logger logger= LoggerFactory.getLogger(FunkoServiceImp.class);
-    private FunkoRepository funkoRepository;
-    private FunkoCache cache;
+    private final FunkoRepository funkoRepository;
+    private final FunkoCache cache;
     private static final int CACHE_SIZE = 10;
 
     private FunkoServiceImp(FunkoRepository funkoRepository){
@@ -44,7 +41,7 @@ public class FunkoServiceImp implements FunkoService {
     }
 
     @Override
-    public List<Funko> findAll() throws SQLException, ExecutionException, InterruptedException {
+    public List<Funko> findAll() throws Exception {
         return funkoRepository.findAll().get();
     }
 
@@ -54,7 +51,7 @@ public class FunkoServiceImp implements FunkoService {
     }
 
     @Override
-    public Optional<Funko> findById(long id) throws SQLException, ExecutionException, InterruptedException {
+    public Optional<Funko> findById(long id) throws Exception {
         return funkoRepository.findById(id).get();
     }
 
@@ -92,7 +89,7 @@ public class FunkoServiceImp implements FunkoService {
 
     @Override
     public CompletableFuture<Void> importar() {
-        return CompletableFuture.supplyAsync(()->{
+        return CompletableFuture.runAsync(()->{
             String rutaFileCSV = Paths.get("").toAbsolutePath().toString()+ File.separator + "data" + File.separator + "funkos.csv";
             try (BufferedReader br = new BufferedReader(new FileReader(rutaFileCSV))){
                 br.readLine();
@@ -113,13 +110,12 @@ public class FunkoServiceImp implements FunkoService {
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
-            return null;
         });
     }
 
     @Override
-    public void exportar(String ruta) {
-//        return CompletableFuture.runAsync(()->{
+    public CompletableFuture<Void> exportar(String ruta) {
+        return CompletableFuture.runAsync(()->{
             Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class,new LocalDateTypeAdapter())
                     .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter()).create();
             try {
@@ -129,7 +125,104 @@ public class FunkoServiceImp implements FunkoService {
             } catch (InterruptedException | ExecutionException | SQLException | IOException e) {
                 throw new RuntimeException(e);
             }
-//        });
+        });
+    }
+
+    @Override
+    public CompletableFuture<Funko> funkoMasCaro() {
+        return CompletableFuture.supplyAsync(()->
+        {
+            Funko funko;
+            try {
+                funko = funkoRepository.findAll().get().stream().max(Comparator.comparing(Funko::getPrecio)).get();
+
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return funko;
+        });
+    }
+
+    @Override
+    public CompletableFuture<Double> mediaFunko() {
+        return CompletableFuture.supplyAsync(()->{
+            double media;
+            try {
+                media = funkoRepository.findAll().get().stream().mapToDouble(Funko::getPrecio).average().getAsDouble();
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return media;
+        });
+    }
+
+    @Override
+    public CompletableFuture<Map<String, List<Funko>>> agrupadoPorModelos() {
+        return CompletableFuture.supplyAsync(()-> {
+           var map = new HashMap<String, List<Funko>>();
+            try {
+                funkoRepository.findAll().get().forEach(funko -> {
+                    map.put(funko.getModelo(), funkoRepository.findByModelo(funko.getModelo()).join());
+                });
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return map;
+        });
+    }
+
+    @Override
+    public CompletableFuture<Map<String, Integer>> numeroFunkoPorModelos() {
+        return CompletableFuture.supplyAsync(()->{
+            var map = new HashMap<String, Integer>();
+            try {
+                funkoRepository.findAll().get().stream().forEach(funko ->{
+                   map.put(funko.getModelo(), (int) funkoRepository.findByModelo(funko.getModelo()).join().stream().count());
+                });
+            } catch (InterruptedException | ExecutionException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return map;
+        });
+    }
+
+    @Override
+    public CompletableFuture<List<Funko>> funkoLanzados2023() {
+        return CompletableFuture.supplyAsync(()->{
+            var funkos2023 = new ArrayList<Funko>();
+            try {
+                funkoRepository.findAll().get().stream().filter(funko -> funko.getFechaLanzamiento().getYear() == 2023).forEach(funkos2023::add);
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return funkos2023;
+        });
+    }
+
+    @Override
+    public CompletableFuture<Integer> numeroFunkosStitch() {
+        return CompletableFuture.supplyAsync(()->{
+            int numeroFunkosStitch = 0;
+            try {
+                numeroFunkosStitch = (int) funkoRepository.findAll().get().stream().filter(funko -> funko.getNombre().contains("Stitch")).count();
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return numeroFunkosStitch;
+        });
+    }
+
+    @Override
+    public CompletableFuture<List<Funko>> funkosStitch() {
+        return CompletableFuture.supplyAsync(()->{
+            var funkosStitch= new ArrayList<Funko>();
+            try {
+                funkoRepository.findAll().get().stream().filter(funko -> funko.getNombre().contains("Stitch")).forEach(funkosStitch::add);
+            } catch (SQLException | ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            return funkosStitch;
+        });
     }
 
 }

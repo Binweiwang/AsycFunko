@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DatabaseManager{
+public class DatabaseManager implements AutoCloseable{
     private static DatabaseManager instance = null;
     private final Logger logger = LoggerFactory.getLogger(DatabaseManager.class);
     private final HikariDataSource dataSource;
@@ -83,5 +83,10 @@ public class DatabaseManager{
 
     public synchronized Connection getConnection() throws SQLException {
       return dataSource.getConnection();
+    }
+
+    @Override
+    public void close() throws Exception {
+        dataSource.close();
     }
 }
