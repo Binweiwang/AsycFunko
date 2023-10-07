@@ -11,6 +11,12 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
     private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
+    /**
+     * Escribe un valor JSON (una matriz, objeto, cadena, número, booleano o nulo)
+     * @param out
+     * @param value Puede ser nulo.
+     * @throws IOException
+     */
     @Override
     public void write(JsonWriter out, LocalDate value) throws IOException {
         if (value == null) {
@@ -20,6 +26,12 @@ public class LocalDateTypeAdapter extends TypeAdapter<LocalDate> {
         }
     }
 
+    /**
+     * Lee el siguiente valor JSON del JsonReader proporcionado y lo convierte en un objeto Java.
+     * @param in JsonReader para leer. Nunca es nulo.
+     * @return Puede ser nulo.
+     * @throws IOException
+     */
     @Override
     public LocalDate read(JsonReader in) throws IOException {
         if (in.peek() == com.google.gson.stream.JsonToken.NULL) {

@@ -11,6 +11,7 @@ import java.util.UUID;
 @Data
 @Builder
 public class Funko {
+    // Propiedades de la clase
     private long id;
     private UUID cod;
     private long myId;
@@ -21,6 +22,7 @@ public class Funko {
     private final LocalDateTime credated_at;
     private LocalDateTime updated_at;
 
+    // Constructor
     public Funko(UUID cod, long myId, String nombre, String modelo, double precio, LocalDate fechaLanzamiento) {
         this.cod = cod;
         this.myId = myId;
@@ -31,7 +33,7 @@ public class Funko {
         this.credated_at = LocalDateTime.now();
         this.updated_at = LocalDateTime.now();
     }
-
+    // Constructor
     public Funko(long id, UUID cod, long myId, String nombre, String modelo, double precio, LocalDate fechaLanzamiento, LocalDateTime credated_at, LocalDateTime updated_at) {
         this.id = id;
         this.cod = cod;

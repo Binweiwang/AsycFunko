@@ -9,8 +9,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class LocalDateTimeTypeAdapter extends TypeAdapter<LocalDateTime> {
+
     private final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
+    /**
+     * Escribe un valor JSON (una matriz, objeto, cadena, número, booleano o nulo)
+     * @param out
+     * @param value Puede ser nulo.
+     * @throws IOException
+     */
     @Override
     public void write(JsonWriter out, LocalDateTime value) throws IOException {
         if (value == null) {
@@ -20,6 +27,12 @@ public class LocalDateTimeTypeAdapter extends TypeAdapter<LocalDateTime> {
         }
     }
 
+    /**
+     * Lee el siguiente valor JSON del JsonReader proporcionado y lo convierte en un objeto Java.
+     * @param in JsonReader para leer. Nunca es nulo.
+     * @return Puede ser nulo.
+     * @throws IOException
+     */
     @Override
     public LocalDateTime read(JsonReader in) throws IOException {
         if (in.peek() == com.google.gson.stream.JsonToken.NULL) {
