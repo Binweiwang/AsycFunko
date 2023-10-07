@@ -24,6 +24,9 @@ dependencies {
     implementation("com.h2database:h2:2.1.214")
     // HikaryCP para la conexión a la BD
     implementation("com.zaxxer:HikariCP:5.0.1")
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
 
 tasks.test {

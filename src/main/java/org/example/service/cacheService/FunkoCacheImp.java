@@ -51,7 +51,7 @@ public class FunkoCacheImp implements FunkoCache {
     @Override
     public void clear() {
         cache.entrySet().removeIf(funko ->{
-            boolean shouldRemove = funko.getValue().getUpdated_at().plusMinutes(1).isBefore(LocalDateTime.now());
+            boolean shouldRemove = funko.getValue().getUpdated_at().plusMinutes(2).isBefore(LocalDateTime.now());
             if (shouldRemove){
                 logger.debug("Eliminando por la cadudcida funko de cache con id: " + funko.getKey());
             }

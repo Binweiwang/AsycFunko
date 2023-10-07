@@ -14,4 +14,6 @@ public interface CrudRepository<T,ID> {
     CompletableFuture<ArrayList<Funko>> findAll() throws SQLException;
     CompletableFuture<Boolean> deleteById(Long id) throws SQLException;
     CompletableFuture<Void> deleteAll() throws SQLException;
+
+
 }

@@ -10,5 +10,6 @@ import java.util.concurrent.CompletableFuture;
 public interface FunkoRepository extends CrudRepository<Funko, Long> {
 
     CompletableFuture<ArrayList<Funko>> findByNombre(String nombre) throws SQLException;
-    CompletableFuture<ArrayList<Funko>> csvToFunko() throws SQLException;
+
+
 }
