@@ -1,4 +1,8 @@
 package org.example.exception;
 
-public class FunkoException {
+public abstract class FunkoException extends Exception{
+    public FunkoException(String mensaje){
+        super(mensaje);
+    };
+
 }
