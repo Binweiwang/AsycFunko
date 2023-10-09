@@ -64,8 +64,6 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 }
             } catch (SQLException e) {
                 logger.debug("Error al guardar el funko " + e.getMessage());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
             return funko;
         });
@@ -98,7 +96,7 @@ public class FunkoRepositoryImp implements FunkoRepository {
                     logger.debug("No ha podido encontrar funko con: " + funko.getId());
                 }
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.debug("Error al actualizar el funko " + e.getMessage());
             }
             return funko;
         });
@@ -121,20 +119,10 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 stmt.setLong(1, id);
                 var rs = stmt.executeQuery();
                 while (rs.next()) {
-                    funko = Optional.of(Funko.builder()
-                                    .id(rs.getLong("id"))
-                                    .nombre(rs.getString("nombre"))
-                                    .cod(rs.getObject("cod", UUID.class))
-                                    .myId(rs.getLong("myID"))
-                                    .precio(rs.getDouble("precio"))
-                                    .modelo(rs.getString("modelo"))
-                                    .credated_at(rs.getObject("credated_at", LocalDateTime.class))
-                                    .updated_at(rs.getObject("updated_at",LocalDateTime.class))
-                                    .build()
-                );
+                    funko = getFunko(rs);
                 }
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.debug("Error al buscar funko por id" + e.getMessage());
             }
             return funko;
         });
@@ -154,24 +142,11 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 logger.debug("Obteniendo todos los funkos");
                 var rs = stmt.executeQuery();
                 while (rs.next()) {
-                    Funko funko = Funko.builder()
-                            .id(rs.getInt("id"))
-                            .cod(rs.getObject("cod", UUID.class))
-                            .myId(rs.getLong("myid"))
-                            .nombre(rs.getString("nombre"))
-                            .modelo(rs.getString("modelo"))
-                            .precio(rs.getDouble("precio"))
-                            .fechaLanzamiento(((java.sql.Date) rs.getObject("fecha_lanzamiento")).toLocalDate())
-                            .credated_at(rs.getTimestamp("created_at").toLocalDateTime())
-                            .updated_at(rs.getTimestamp("updated_at").toLocalDateTime())
-                            .build();
+                    Funko funko = getFunko(rs).get();
                     lista.add(funko);
                 }
             } catch (SQLException e) {
-                logger.error("Error al buscar todos los alumnos", e);
-                throw new RuntimeException(e);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+                logger.error("Error al buscar todos los alumnos", new RuntimeException(e));
             }
             return lista;
         });
@@ -192,9 +167,9 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 logger.debug("Borrando funko por id");
                 stmt.setLong(1, integer);
                 var rs = stmt.executeUpdate();
-                stmt.close();
                 return rs > 0;
             } catch (SQLException e) {
+                logger.debug("Error al borrar funko por id" + e.getMessage());
                 throw new RuntimeException(e);
             }
         });
@@ -213,9 +188,8 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 var stmt = connection.prepareStatement(query)) {
                 logger.debug("Borrando todos los Funkos");
                 stmt.executeUpdate();
-                stmt.close();
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                logger.debug("Error al borrar todos los funkos" + e.getMessage());
             }
         });
     }
@@ -237,22 +211,11 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 stmt.setString(1, "%" + nombre + "%");
                 var rs = stmt.executeQuery();
                 while (rs.next()) {
-                    Funko funko = Funko.builder()
-                            .id(rs.getInt("id"))
-                            .cod(rs.getObject("cod", UUID.class))
-                            .myId(rs.getLong("myid"))
-                            .nombre(rs.getString("nombre"))
-                            .modelo(rs.getString("modelo"))
-                            .precio(rs.getDouble("precio"))
-                            .fechaLanzamiento(((java.sql.Date) rs.getObject("fecha_lanzamiento")).toLocalDate())
-                            .credated_at(rs.getTimestamp("created_at").toLocalDateTime())
-                            .updated_at(rs.getTimestamp("updated_at").toLocalDateTime())
-                            .build();
+                    Funko funko = getFunko(rs).get();
                     lista.add(funko);
                 }
             } catch (SQLException e) {
-                logger.debug("Error al buscar funko por nombre");
-                throw new RuntimeException(e);
+                logger.debug("Error al buscar funko por nombre" + e.getMessage());
             }
             return lista;
         });
@@ -274,24 +237,29 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 stmt.setString(1, "%" + modelo + "%");
                 var rs = stmt.executeQuery();
                 while (rs.next()) {
-                    Funko funko = Funko.builder()
-                            .id(rs.getInt("id"))
-                            .cod(rs.getObject("cod", UUID.class))
-                            .myId(rs.getLong("myid"))
-                            .nombre(rs.getString("nombre"))
-                            .modelo(rs.getString("modelo"))
-                            .precio(rs.getDouble("precio"))
-                            .fechaLanzamiento(((java.sql.Date) rs.getObject("fecha_lanzamiento")).toLocalDate())
-                            .credated_at(rs.getTimestamp("created_at").toLocalDateTime())
-                            .updated_at(rs.getTimestamp("updated_at").toLocalDateTime())
-                            .build();
+                    Funko funko = getFunko(rs).get();
                     lista.add(funko);
                 }
             } catch (SQLException e) {
-                logger.debug("Error al buscar funko por modelo");
-                throw new RuntimeException(e);
+                logger.debug("Error al buscar funko por modelo" + e.getMessage());
             }
             return lista;
         });
+    }
+
+    private static Optional<Funko> getFunko(ResultSet rs) throws SQLException {
+        Optional<Funko> funko;
+        funko = Optional.of(Funko.builder()
+                .id(rs.getLong("id"))
+                .nombre(rs.getString("nombre"))
+                .cod(rs.getObject("cod", UUID.class))
+                .myId(rs.getLong("myID"))
+                .precio(rs.getDouble("precio"))
+                .modelo(rs.getString("modelo"))
+                .credated_at(rs.getObject("created_at", LocalDateTime.class))
+                .updated_at(rs.getObject("updated_at",LocalDateTime.class))
+                .build()
+        );
+        return funko;
     }
 }

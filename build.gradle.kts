@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    // Para nuestros test
+    testImplementation(platform("org.junit:junit-bom:5.9.2"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     // Logger
     implementation("ch.qos.logback:logback-classic:1.4.11")
@@ -26,6 +27,9 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.0.1")
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation("com.google.code.gson:gson:2.10.1")
+    // Mockito para nuestros test con JUnit 5
+    testImplementation("org.mockito:mockito-junit-jupiter:5.5.0")
+    testImplementation("org.mockito:mockito-core:5.5.0")
 
 }
 

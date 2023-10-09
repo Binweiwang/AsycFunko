@@ -156,14 +156,7 @@ public class FunkoServiceImp implements FunkoService {
                 String lines;
                 while((lines = br.readLine()) != null){
                     String[] line = lines.split(",");
-                    Funko funko = Funko.builder()
-                            .cod(UUID.fromString(line[0].substring(1,35)))
-                            .myId(IdGenerator.getInstance().getMyid())
-                            .nombre(line[1])
-                            .modelo(line[2])
-                            .precio(Double.parseDouble(line[3]))
-                            .fechaLanzamiento(LocalDate.parse(line[4]))
-                            .build();
+                    Funko funko = getFunko(line);
                     logger.debug("Importando funko: " + funko);
                     funkoRepository.save(funko);
                 }
@@ -171,6 +164,22 @@ public class FunkoServiceImp implements FunkoService {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    /**
+     * Metodo que delvelve un Funko
+     * @param line los datos de Funko
+     * @return un Funko
+     */
+    private static Funko getFunko(String[] line) {
+        return Funko.builder()
+                .cod(UUID.fromString(line[0].substring(1,35)))
+                .myId(IdGenerator.getInstance().getMyid())
+                .nombre(line[1])
+                .modelo(line[2])
+                .precio(Double.parseDouble(line[3]))
+                .fechaLanzamiento(LocalDate.parse(line[4]))
+                .build();
     }
 
     /**
@@ -188,7 +197,7 @@ public class FunkoServiceImp implements FunkoService {
                 String json = gson.toJson(funkos);
                 Files.writeString(Path.of(ruta),json);
             } catch (InterruptedException | ExecutionException | SQLException | IOException e) {
-                throw new RuntimeException(e);
+                logger.debug("Error de exportar archivo a JSON " + e.getMessage());
             }
         });
     }
