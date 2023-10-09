@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DatabaseManager{
+public class DatabaseManager implements AutoCloseable{
     private static DatabaseManager instance = null;
     private final Logger logger = LoggerFactory.getLogger(DatabaseManager.class);
     private final HikariDataSource dataSource;
@@ -23,7 +23,9 @@ public class DatabaseManager{
     private boolean initTables;
     private String initScript;
 
-
+    /**
+     * Constructor privado
+     */
     private DatabaseManager(){
         logger.debug("Iniciando la configuracion basica de base de datos");
         loadPropierties();
@@ -40,6 +42,10 @@ public class DatabaseManager{
         }
     }
 
+    /**
+     * Metodo que inicializa la base de datos
+     * @param conn conexion a la base de datos
+     */
     private void initDatabas(Connection conn) {
         logger.debug("Cargando scriptt de la base de datos");
         try{
@@ -49,6 +55,13 @@ public class DatabaseManager{
         }
     }
 
+    /**
+     * Metodo que ejecuta el script de la base de datos
+     * @param conn conexion a la base de datos
+     * @param initScript script de la base de datos
+     * @param initTables booleano que indica si se inicializa la base de datos
+     * @throws FileNotFoundException excepcion de fichero no encontrado
+     */
     private void excuteScript(Connection conn, String initScript, boolean initTables) throws FileNotFoundException {
         var sr = new ScriptRunner(conn);
         var scirptPath = ClassLoader.getSystemResource(initScript).getFile();
@@ -59,7 +72,9 @@ public class DatabaseManager{
     }
 
 
-
+    /**
+     * Metodo que carga las propiedades de la base de datos
+     */
     private synchronized void loadPropierties() {
         logger.debug("Cargando fichero de configuracion de la base de datos");
         try{
@@ -74,6 +89,10 @@ public class DatabaseManager{
         }
     }
 
+    /**
+     * Metodo singleton que devuelve la instancia de la base de datos
+     * @return
+     */
     public static synchronized  DatabaseManager getInstance(){
         if(instance == null){
             instance = new DatabaseManager();
@@ -81,7 +100,21 @@ public class DatabaseManager{
         return instance;
     }
 
+    /**
+     * Metodo que devuelve la conexion a la base de datos
+     * @return conexion a la base de datos
+     * @throws SQLException excepcion de SQL
+     */
     public synchronized Connection getConnection() throws SQLException {
       return dataSource.getConnection();
+    }
+
+    /**
+     * Metodo que cierra la conexion a la base de datos
+     * @throws Exception
+     */
+    @Override
+    public void close() throws Exception {
+        dataSource.close();
     }
 }

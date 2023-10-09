@@ -7,29 +7,26 @@ import org.example.service.DatabaseManager;
 import org.example.service.funko.FunkoService;
 import org.example.service.funko.FunkoServiceImp;
 
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import static java.lang.Thread.sleep;
-
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException, SQLException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, SQLException, ExecutionException, IOException {
+
         FunkoService funkoService = FunkoServiceImp.getInstance(FunkoRepositoryImp.getInstance(DatabaseManager.getInstance()));
-        System.out.println("Convierte CSV a Funkos");
-        List<Funko> funkos = funkoService.csvToFunko();
-        for (Funko funko : funkos) {
-           funkoService.save(funko);
-        }
-        System.out.println("Obetiendo todos los funkos");
-        List<Funko> all = funkoService.findAll();
-        for (Funko funko : all) {
-            System.out.println(funko);
-        }
-        System.out.println("Buscar Funko por nombre Loki Mischief");
-        List<Funko> lokiMischief = funkoService.findbyNombre("Loki Mischief");
-        System.out.println(lokiMischief);
+        System.out.println("Importando datos..." + funkoService.importar().get());
+        System.out.println("Exportando datos..." + funkoService.exportar("funkos.json").get());
+        System.out.println("Funko mas caro: " + funkoService.funkoMasCaro().get());
+        System.out.println("Media de precio de los funkos: " + funkoService.mediaFunko().get());
+        System.out.println("Funkos agrupados por modelos: " + funkoService.agrupadoPorModelos().get());
+        System.out.println("Numero de funkos por modelo: " + funkoService.numeroFunkoPorModelos().get());
+        System.out.println("Funkos lanzados en 2023: " + funkoService.funkoLanzados2023().get());
+        System.out.println("Numero de funkos de Stitch: " + funkoService.numeroFunkosStitch().get());
     }
-}
+    }
