@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -256,6 +257,7 @@ public class FunkoRepositoryImp implements FunkoRepository {
                 .myId(rs.getLong("myID"))
                 .precio(rs.getDouble("precio"))
                 .modelo(rs.getString("modelo"))
+                .fechaLanzamiento(rs.getObject("fecha_lanzamiento", LocalDate.class))
                 .credated_at(rs.getObject("created_at", LocalDateTime.class))
                 .updated_at(rs.getObject("updated_at",LocalDateTime.class))
                 .build()

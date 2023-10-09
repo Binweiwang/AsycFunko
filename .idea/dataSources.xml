@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="funkos" uuid="4584d96f-d732-44f6-9a1c-8fb58831a32d">
+    <data-source source="LOCAL" name="FUNKOS" uuid="c349cf1d-b8ae-4c8e-8a9b-590cae49b2dd">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:./funkos</jdbc-url>
+      <jdbc-url>jdbc:h2:./FUNKOS</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

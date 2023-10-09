@@ -20,7 +20,13 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, SQLException, ExecutionException, IOException {
 
         FunkoService funkoService = FunkoServiceImp.getInstance(FunkoRepositoryImp.getInstance(DatabaseManager.getInstance()));
-
-        funkoService.funkosStitch().get().forEach(System.out::println);
+        System.out.println("Importando datos..." + funkoService.importar().get());
+        System.out.println("Exportando datos..." + funkoService.exportar("funkos.json").get());
+        System.out.println("Funko mas caro: " + funkoService.funkoMasCaro().get());
+        System.out.println("Media de precio de los funkos: " + funkoService.mediaFunko().get());
+        System.out.println("Funkos agrupados por modelos: " + funkoService.agrupadoPorModelos().get());
+        System.out.println("Numero de funkos por modelo: " + funkoService.numeroFunkoPorModelos().get());
+        System.out.println("Funkos lanzados en 2023: " + funkoService.funkoLanzados2023().get());
+        System.out.println("Numero de funkos de Stitch: " + funkoService.numeroFunkosStitch().get());
     }
     }

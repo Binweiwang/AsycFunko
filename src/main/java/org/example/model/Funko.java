@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 @Builder
 public class Funko {
-    // Propiedades de la clase
+    // Atributos
     private long id;
     private UUID cod;
     private long myId;
