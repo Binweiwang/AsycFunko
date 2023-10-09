@@ -1,3 +1,11 @@
 
-:
-java:S2187"Add some tests to this class.(¦ˆŒ†8Ò«ğ¡±1
+¯
+java:S3577"‘Rename class "funkosServicesTest" to match the regular expression: '^((Test|IT)[a-zA-Z0-9_]+|[A-Z][a-zA-Z0-9_]*(Test|Tests|TestCase|IT|ITCase))$'(¦ˆŒ†8“²¦±1
+x
+java:S3415+"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(„şßıüÿÿÿÿ8Ğ´¥¦±1
+s
+java:S3415,"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(—æªÌ8Ğ´¥¦±1
+x
+java:S34157"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(ÌŒÕÔüÿÿÿÿ8“²¦±1
+r
+java:S34158"VSwap these 2 arguments so they are in the correct order: expected value, actual value.(£·ò8“²¦±1
