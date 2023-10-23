@@ -7,10 +7,9 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -78,9 +77,9 @@ public class DatabaseManager implements AutoCloseable{
     private synchronized void loadPropierties() {
         logger.debug("Cargando fichero de configuracion de la base de datos");
         try{
-            var file = ClassLoader.getSystemResource("database.properties").getFile();
+            var pathFile = Paths.get("").toAbsolutePath().toString() + File.separator + "src" + File.separator  + File.separator + "main" + File.separator + "resources" + File.separator + "database.properties";
             var prop = new Properties();
-            prop.load(new FileReader(file));
+            prop.load(new FileReader(pathFile));
             databaseUrl = prop.getProperty("database.url", "jdbc:h2:mem:FUNKKOS");
             initTables = Boolean.parseBoolean(prop.getProperty("database.initTables","false"));
             initScript = prop.getProperty("database.initScript","init.sql");
