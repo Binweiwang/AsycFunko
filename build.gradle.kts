@@ -8,7 +8,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
-
 dependencies {
     // Para nuestros test
     testImplementation(platform("org.junit:junit-bom:5.9.2"))
@@ -35,4 +34,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "org.example.Main"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }

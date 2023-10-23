@@ -15,3 +15,7 @@ l
 <src/main/java/org/example/service/funko/FunkoServiceImp.java,5\2\5281d2a83be3e671f8b4371735c3cf29178cc54f
 d
 4src/test/java/services/funko/funkosServicesTest.java,f\3\f3df0352793296e9e8f1feb7d4174ee223482a21
+m
+=src/main/java/org/example/repository/curd/CrudRepository.java,2\a\2af6cccb3a56d21b34940e162f7fbca6fd800ec6
+i
+9src/main/java/org/example/service/funko/FunkoService.java,7\e\7e66d010b048d0f0e782a195c97776be0c72587b

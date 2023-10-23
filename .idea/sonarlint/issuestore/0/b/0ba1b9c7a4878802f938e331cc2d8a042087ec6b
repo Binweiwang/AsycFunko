@@ -1,0 +1,23 @@
+
+
+java:S1130"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(€»ëéúÿÿÿÿ8À¬Ø¸±1
+
+java:S1130"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(€»ëéúÿÿÿÿ8À¬Ø¸±1
+G	java:S106"+Replace this use of System.out by a logger.(´Ğˆî8ŒêÅ¸±1
+G	java:S106"+Replace this use of System.out by a logger.(¯±é8ŒêÅ¸±1
+G	java:S106"+Replace this use of System.out by a logger.(ÍôÇå8ŒêÅ¸±1
+G	java:S106"+Replace this use of System.out by a logger.(™Ò¬ç8ŒêÅ¸±1
+L	java:S106"+Replace this use of System.out by a logger.(Ôå­üÿÿÿÿ8êÅ¸±1
+L	java:S106"+Replace this use of System.out by a logger.(³¼×úÿÿÿÿ8êÅ¸±1
+L	java:S106"+Replace this use of System.out by a logger.(ù™éúÿÿÿÿ8êÅ¸±1
+L	java:S106"+Replace this use of System.out by a logger.(ü¬ôâıÿÿÿÿ8˜áÕ¸±1
+Q
+java:S1128"4Remove this unused import 'org.example.model.Funko'.(ÃÉøî8Ã¬Ø¸±1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Ã¬Ø¸±1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ã¬Ø¸±1
+L
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8Ã¬Ø¸±1
+`
+java:S1128"CRemove this unused import 'java.util.concurrent.CompletableFuture'.(ôŞä´8ÊßÛ¸±1

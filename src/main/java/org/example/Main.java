@@ -28,5 +28,6 @@ public class Main {
         System.out.println("Numero de funkos por modelo: " + funkoService.numeroFunkoPorModelos().get());
         System.out.println("Funkos lanzados en 2023: " + funkoService.funkoLanzados2023().get());
         System.out.println("Numero de funkos de Stitch: " + funkoService.numeroFunkosStitch().get());
+        System.exit(0);
     }
     }
